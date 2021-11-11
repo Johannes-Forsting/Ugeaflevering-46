@@ -9,7 +9,8 @@ public class Rules {
     public boolean checkHaiku(String[] haiku){
         boolean check = true;
         for (int i = 0; i < haiku.length; i++) {
-            check = checkForSyllables(haiku[i], i);
+            String currentSentence = haiku[i].toLowerCase();
+            check = checkForSyllables(currentSentence, i);
             if (check == false){
                 break;
             }
