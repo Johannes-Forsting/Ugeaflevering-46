@@ -9,12 +9,33 @@ import java.util.Scanner;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static ArrayList<String> haikus = new ArrayList<String>();
+    static Rules rules = new Rules();
+    static FileIO files = new FileIO();
     public static void main(String[] args) {
-        Rules rules = new Rules();
-        FileIO files = new FileIO();
+        boolean whileCondition = true;
+        while(whileCondition) {
+            System.out.println("Press 1 for: See current haikus.");
+            System.out.println("Press 2 for: Make new haiku.");
+            System.out.println("Press 3 for: Quit application.");
+            int choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    showCurrentHaikus();
+                    break;
+                case 2:
+                    makeHaiku();
+                    break;
+                case 3:
+                    whileCondition = false;
+                    break;
+            }
+        }
+    }
 
+    static void makeHaiku(){
+        scanner.nextLine();
         //Laver Haiku og printer det
-        String[] haiku = getHaiku();
+        String[] haiku = Rules.getHaiku();
         for (int i = 0; i < haiku.length; i++) {
             System.out.println(haiku[i]);
         }
@@ -30,6 +51,15 @@ public class Main {
         }
     }
 
+    static void showCurrentHaikus(){
+        ArrayList<String> haikusToShow = FileIO.getCurrentHaikus();
+        for (int i = 0; i < haikusToShow.size(); i++) {
+            String[] currentHaiku = haikusToShow.get(i).split(";");
+            System.out.println("ID: " + currentHaiku[0] + "\nAuthor: " + currentHaiku[1]);
+            System.out.println(currentHaiku[2] + "\n" + currentHaiku[3] + "\n" + currentHaiku[4] + "\n\n\n");
+        }
+    }
+
     static String convertToOneString(String[] haiku, String name){
         int x = FileIO.getNextID();
         String wholeString = x + ";" + name;
@@ -39,24 +69,8 @@ public class Main {
         return wholeString;
     }
 
-
     static void addHaikuToOtherHaikus(String haiku){
         haikus = FileIO.getCurrentHaikus();
         haikus.add(haiku);
-    }
-
-    static String[] getHaiku(){
-        String[] haiku = new String[3];
-        for (int i = 0; i < haiku.length; i++) {
-            haiku[i] = getLine(i);
-        }
-        return haiku;
-    }
-
-    static String getLine(int line){
-        String text = line == 0 ? "Write the first sentence of your poem." : line == 1 ? "Write your second sentence of your poem." : "Write your last sentence of your poem.";
-        System.out.println(text);
-        String word = scanner.nextLine();
-        return word;
     }
 }

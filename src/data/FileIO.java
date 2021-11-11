@@ -11,7 +11,7 @@ public class FileIO {
     public static ArrayList<String> getCurrentHaikus(){
         ArrayList<String> currentHaikus = new ArrayList<String>();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("output.csv"));
+            BufferedReader reader = new BufferedReader(new FileReader("Haikus.csv"));
             String line;
             while((line = reader.readLine()) != null){
                 currentHaikus.add(line);
@@ -27,7 +27,7 @@ public class FileIO {
         String line = "";
         int lastID = 0;
         try {
-            reader = new BufferedReader(new FileReader("output.csv"));
+            reader = new BufferedReader(new FileReader("Haikus.csv"));
             while((line = reader.readLine()) != null){
                 String[] dividedString = line.split(";");
                 lastID = Integer.parseInt(dividedString[0]);
@@ -46,7 +46,7 @@ public class FileIO {
     public static void addToFile(ArrayList<String> haikus) {
         BufferedWriter writer;
             try {
-                writer = new BufferedWriter(new FileWriter("output.csv"));
+                writer = new BufferedWriter(new FileWriter("Haikus.csv"));
                 writer.write(haikus.get(0));
                 for (int i = 1; i < haikus.size(); i++) {
                     writer.write("\n" + haikus.get(i));
