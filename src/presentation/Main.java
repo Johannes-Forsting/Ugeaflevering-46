@@ -27,11 +27,13 @@ public class Main {
                     break;
                 case 3:
                     whileCondition = false;
+                    System.out.println("Goodbye! :D ");
                     break;
             }
         }
     }
 
+    //Haiku bliver lavet i et String-array og bliver tjekket igennem med en metod i Rules klassen.
     static void makeHaiku(){
         scanner.nextLine();
         //Laver Haiku og printer det
@@ -39,6 +41,9 @@ public class Main {
         for (int i = 0; i < haiku.length; i++) {
             System.out.println(haiku[i]);
         }
+
+        //Hvis Stringen opfylder kravene for et Haiku får den et ID og brugeren skal indtaste sit navn.
+        //Herefter bliver digtet skrevet om til én String som kan indlæses af filereaderen i FileIO klassen.
         if (rules.checkHaiku(haiku)){
             System.out.println("What a beautiful poem. What is the name of such an inspiring writer?");
             String name = scanner.nextLine();
