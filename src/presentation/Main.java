@@ -56,6 +56,7 @@ public class Main {
         }
     }
 
+    //Laver en arraylist af de tidligere Haikus og printer dem
     static void showCurrentHaikus(){
         ArrayList<String> haikusToShow = FileIO.getCurrentHaikus();
         for (int i = 0; i < haikusToShow.size(); i++) {
@@ -65,6 +66,7 @@ public class Main {
         }
     }
 
+    //Konvertere en String-array om til én String som kan oploades til FileReader.
     static String convertToOneString(String[] haiku, String name){
         int x = FileIO.getNextID();
         String wholeString = x + ";" + name;
@@ -74,6 +76,7 @@ public class Main {
         return wholeString;
     }
 
+    //Tilføjer haiku til listen af allerede eksisterende haikus så de kan oploades til csv-filen.
     static void addHaikuToOtherHaikus(String haiku){
         haikus = FileIO.getCurrentHaikus();
         haikus.add(haiku);

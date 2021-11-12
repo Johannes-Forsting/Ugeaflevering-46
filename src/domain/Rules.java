@@ -9,6 +9,7 @@ public class Rules {
     public Rules (){
     }
 
+    //
     public boolean checkHaiku(String[] haiku){
         boolean check = true;
         for (int i = 0; i < haiku.length; i++) {
