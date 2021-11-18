@@ -5,9 +5,7 @@ import java.util.ArrayList;
 
 public class FileIO {
 
-    public FileIO(){
-    }
-
+    //Metode som downloader alle de nuværende haikus og returnere dem som en arraylist
     public static ArrayList<String> getCurrentHaikus(){
         ArrayList<String> currentHaikus = new ArrayList<String>();
         try {
@@ -22,8 +20,10 @@ public class FileIO {
         return currentHaikus;
     }
 
+
+    //Metode som tjekker de nuværende ID på de oploadede Haiku-digte, og returner den næste værdi i rækken.
     public static int getNextID(){
-        BufferedReader reader = null;
+        BufferedReader reader;
         String line = "";
         int lastID = 0;
         try {
@@ -42,7 +42,9 @@ public class FileIO {
 
 
 
-
+    //Metode som uploader alle de haikus-digte som blev hentet ned tidligere.
+    //Jeg kunne ikke få den til at tilføje til dokumentet men kun overskrive det.
+    //Så før jeg uploader til dokumentet, downloader jeg hele dokumentet og uploader igen med det nye haiku digt.
     public static void addToFile(ArrayList<String> haikus) {
         BufferedWriter writer;
             try {
